@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Encoder</title>
+</head>
+<body>
+    <h1>Input Encoder</h1>
+    <form action="/encode" method="post">
+        <label for="input_data">Enter text to encode:</label><br>
+        <input type="text" id="input_data" name="input_data" required><br>
+        <button type="submit">Encode</button>
+    </form>
+
+    <h2>Upload a CSV</h2>
+    <form action="/upload_csv" method="post" enctype="multipart/form-data">
+        <label for="file">Upload CSV:</label><br>
+        <input type="file" id="file" name="file" accept=".csv" required><br>
+        <label for="column_name">Column to encode:</label><br>
+        <input type="text" id="column_name" name="column_name" required><br>
+        <button type="submit">Encode CSV</button>
+    </form>
+</body>
+</html>
