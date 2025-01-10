@@ -7,10 +7,17 @@ app = Flask(__name__)
 
 # Encoding function
 def encode_to_10_digits(input_str):
-    hash_obj = hashlib.sha256(input_str.encode())
-    hash_digest = hash_obj.hexdigest()
-    numeric_hash = int(hash_digest, 16)
-    return str(numeric_hash % 10**10).zfill(10)
+    # Step 1: Hash the input string using SHA-256
+    hash_object = hashlib.sha256(input_str.encode())
+    
+    # Step 2: Convert the hash to an integer
+    hash_integer = int(hash_object.hexdigest(), 16)
+    
+    # Step 3: Ensure the number is within the range of 10 digits without leading zeros
+    # Force the range to be between 10^9 and 10^10 - 1
+    ten_digit_number = (hash_integer % (10**9 * 9)) + 10**9
+    
+    return str(ten_digit_number)
 
 @app.route('/')
 def index():
