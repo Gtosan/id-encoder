@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Encoding function
 def encode_to_10_digits(input_str):
     # Step 1: Hash the input string using SHA-256
-    hash_object = hashlib.sha256(input_str.encode())
+    hash_object = hashlib.sha256(input_str.lower().encode())
     
     # Step 2: Convert the hash to an integer
     hash_integer = int(hash_object.hexdigest(), 16)
